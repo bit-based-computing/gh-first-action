@@ -1,12 +1,16 @@
-name: First workflow
+name: First workflow  # workflow name
 
-on: workflow_dispatch
+on: workflow_dispatch   # workflow event - this is manual event
 jobs: 
-  first-job:
-    runs-on: ubuntu-latest
+  first-job:           # job name 
+    runs-on: ubuntu-latest   # where will run 
     steps:
-      - name: Print hello
-        run: echo "Hello world"
+      - name: Print hello     # steps name
+        run: echo "Hello world"   # steps shell command
+      - name: Multiple command
+        run: |                    # use pipe symbol (|) to run multiple command
+            echo "frist command"
+            echo "second command"
        
   
   
