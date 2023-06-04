@@ -1,0 +1,35 @@
+name: Deploy project  # workflow name
+
+on: workflow_dispatch   # workflow event - this is manual event
+jobs:
+  first-job:           # job name
+    runs-on: ubuntu-latest   # where will run
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3    # git checkout and pull code from GitHub repository by GitHub actions
+      - name: Install NodeJs
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install dependencies
+        run: npm ci
+      - name: Run test
+        run: npm test
+  deploy:           # job name
+    runs-on: ubuntu-latest   # where will run
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3    # git checkout and pull code from GitHub repository by GitHub actions
+      - name: Install NodeJs
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install dependencies
+        run: npm ci
+      - name: Run test
+        run: npm run build
+      - name: deploy
+        run: echo " Deploy to server "
+       
+  
+  
